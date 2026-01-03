@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bhavya Sree!</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #FAF9F6;
+            --primary-text: #4A4A4A;
+            --accent-pink: #FFD1DC;
+            --accent-lavender: #E6E6FA;
+            --accent-gold: #FFD700;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            overflow-x: hidden;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Great Vibes', cursive;
+            text-align: center;
+            color: var(--accent-gold);
+        }
+
+        /* --- Animated Background Elements --- */
+        .background-anim {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .bg-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: floatUp 15s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- REDESIGNED HERO SECTION (Split Layout) --- */
+        .hero {
+            min-height: 90vh; /* Allow content to determine height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            max-width: 1100px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Text Side */
+        .hero-text {
+            flex: 1;
+            text-align: left;
+            animation: fadeInLeft 1.5s ease-out;
+        }
+        .hero-text h1 { text-align: left; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; color: #333; }
+        .hero-text .subtitle { font-size: 1.3rem; color: #666; margin-bottom: 2rem; }
+
+        /* Image Side (Boxed Pic) */
+        .hero-image-box {
+            flex: 1;
+            max-width: 450px;
+            position: relative;
+            animation: fadeInRight 1.5s ease-out;
+        }
+        .hero-image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 8px solid white;
+            transform: rotate(3deg); /* Nice tilted effect */
+            transition: all 0.3s ease;
+        }
+        .hero-image-box img:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .btn {
+            padding: 12px 35px;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-lavender));
+            color: #555;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            border: 2px solid white;
+            display: inline-block;
+        }
+        .btn:hover { transform: translateY(-3px); background: var(--accent-gold); color: white;}
+
+        /* --- Countdown --- */
+        #countdown-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: white;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+        #countdown-section h3 { font-size: 2.5rem; }
+        #countdown { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .time-box span { font-size: 2.5rem; color: #d48c9e; display: block; font-weight: 600; }
+        .time-box { font-size: 0.9rem; color: #999; }
+
+        /* --- Sections General --- */
+        .container { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+        .section-title { font-size: 3.5rem; margin-bottom: 3rem; }
+
+        /* --- About / Character --- */
+        .character-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 3px solid var(--accent-pink);
+        }
+        .character-card p { font-size: 1.15rem; color: #555; margin-bottom: 1.5rem; }
+        .highlight-text { color: #d48c9e; font-weight: 600; font-size: 1.25rem;}
+
+        /* --- Quotes Grid --- */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .quote-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        .quote-card:hover { transform: translateY(-10px); }
+        .emoji-header { font-size: 3rem; margin-bottom: 1rem; display: block; animation: bounce 3s infinite; }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .photo-frame {
+            padding: 8px;
+            background: white;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+        .photo-frame:nth-child(odd) { transform: rotate(-1deg); }
+        .photo-frame:nth-child(even) { transform: rotate(1deg); }
+        .photo-frame:hover { transform: rotate(0deg) scale(1.08); z-index: 10; }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(to top, var(--accent-pink), white);
+            margin-top: 4rem;
+        }
+        footer h2 { color: #d48c9e; }
+
+        /* --- Animations --- */
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Mobile tweaks */
+        @media (max-width: 900px) {
+            .hero-container { flex-direction: column-reverse; text-align: center; gap: 2rem; }
+            .hero-text { text-align: center; }
+            .hero-text h1 { text-align: center; font-size: 3.5rem; }
+            .hero-image-box { max-width: 80%; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-anim">
+        <div class="bg-icon" style="left: 5%; animation-duration: 12s; animation-delay: 1s;">🌙</div>
+        <div class="bg-icon" style="left: 25%; animation-duration: 15s; font-size: 1.5rem; animation-delay: 3s;">✨</div>
+        <div class="bg-icon" style="left: 45%; animation-duration: 10s; animation-delay: 0s;">🧸</div>
+        <div class="bg-icon" style="left: 65%; animation-duration: 14s; font-size: 1.5rem; animation-delay: 5s;">🌸</div>
+        <div class="bg-icon" style="left: 85%; animation-duration: 18s; animation-delay: 2s;">💖</div>
+         <div class="bg-icon" style="left: 15%; animation-duration: 16s; font-size: 1rem; animation-delay: 7s;">⭐</div>
+    </div>
+
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Happy Birthday<br><span style="color: #d48c9e">Bhavya Sree</span> 🎉</h1>
+                <p class="subtitle">
+                    "Like the moon, you shine with a gentle, beautiful glow that lights up our world." ✨
+                </p>
+                <a href="#gallery" class="btn">See Our Memories 📸</a>
+            </div>
+            <div class="hero-image-box">
+                <img src="mainpage.jpeg" alt="Bhavya Sree">
+            </div>
+        </div>
+    </header>
+
+    <section id="countdown-section" class="reveal">
+        <h3>The Big Day is Almost Here!</h3>
+        <br>
+        <div id="countdown">
+            <div class="time-box"><span id="days">00</span>Days</div>
+            <div class="time-box"><span id="hours">00</span>Hours</div>
+            <div class="time-box"><span id="minutes">00</span>Mins</div>
+            <div class="time-box"><span id="seconds">00</span>Secs</div>
+        </div>
+    </section>
+
+    <section class="container reveal">
+        <div class="character-card">
+            <h2 class="section-title" style="color: #d48c9e;">The Girl with the Golden Heart 💛</h2>
+            <p>
+                To my dear sister, you are truly special. You have this amazing <span class="highlight-text">child-like innocence</span> that makes the world feel softer and kinder. 
+                Your heart is so pure, always finding joy in the little things. 🧸
+            </p>
+            <p>
+                You are <span class="highlight-text">easy to attach to</span> because you radiate warmth. People love you because you are <span class="highlight-text">sensitive and caring</span>, always understanding what others feel without them saying a word.
+            </p>
+            <div style="font-size: 2rem; margin-top: 1rem;">👼🪄✨</div>
+        </div>
+    </section>
+
+    <section class="container reveal">
+        <h2 class="section-title">What Makes You Special</h2>
+        <div class="quotes-grid">
+            <div class="quote-card" style="border-top: 5px solid #E6E6FA;">
+                <span class="emoji-header">🌙</span>
+                <p><strong>"Like the Moon..."</strong></p>
+                <p>You shine in the darkness, not with a blinding glare, but with a soft, comforting glow that guides us all.</p>
+            </div>
+            <div class="quote-card" style="border-top: 5px solid #FFD1DC;">
+                <span class="emoji-header">🧸</span>
+                <p><strong>"Pure Innocence"</strong></p>
+                <p>Never lose that beautiful, child-like wonder. Your innocence is your superpower in this chaotic world.</p>
+            </div>
+            <div class="quote-card" style="border-top: 5px solid #C5A059;">
+                <span class="emoji-header">💞</span>
+                <p><strong>"A Feeling Heart"</strong></p>
+                <p>Your sensitive nature is a gift. You feel deeply, you love loudly, and you care effortlessly. That is why you are so loved.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="container reveal">
+        <h2 class="section-title">Sweet Memories 📸</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">A larger collection of moments that make us smile.</p>
+        
+        <div class="gallery-grid">
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b4.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b2.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b6.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b11.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b5.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b12.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b13.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b7.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b1.jpeg" alt="Memory"></div>
+            <div class="photo-frame"><img src="C:\Users\vamsi\Desktop\BICS MINI PROJECT\krish\b9.jpeg" alt="Memory"></div>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Happy Birthday Bhavya Sree! 🎂</h2>
+        <p>Made with all my ❤️ for the best sister ever.</p>
+        <div style="font-size: 1.5rem; margin-top: 10px;">🎈🎁🎉</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // --- 1. Confetti ---
+        function fireConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#FFD1DC', '#E6E6FA', '#FFFACD', '#FFD700']
+            });
+        }
+        window.addEventListener('load', () => { fireConfetti(); setTimeout(fireConfetti, 1500); });
+        document.body.addEventListener('click', fireConfetti);
+
+        // --- 2. Scroll Animation ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- 3. Countdown Timer (Jan 3, 2026) ---
+        const birthdayDate = new Date("January 3, 2026 00:00:00").getTime();
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = birthdayDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<h2 style='color: #d48c9e'>🎉 It's Your Special Day! Happy Birthday! 🎉</h2>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
